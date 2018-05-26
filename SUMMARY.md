@@ -1,5 +1,5 @@
 # Table of contents
 
-* Initial page
+* Front Page
 * [Binary Tree Traversal](binary-tree-traversal.md)
 
