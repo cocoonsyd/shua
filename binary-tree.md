@@ -16,7 +16,7 @@
 
 #### Example: 二叉树的前序遍历
 
-Traverse
+Traverse\(注意返回值为空\)
 
 ```java
 //Version 1: Traverse
@@ -37,7 +37,7 @@ public class Solution {
 }
 ```
 
-Divide & Conquer
+Divide & Conquer（注意返回值非空）
 
 ```java
 //Version 2: Divide & Conquer
