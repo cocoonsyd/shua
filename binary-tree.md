@@ -1,4 +1,4 @@
-# Binary Tree
+# Binary Tree: Traverse vs Divide&Conquer
 
 ### Traverse // Divide & Conquer // Non-Recursion
 
