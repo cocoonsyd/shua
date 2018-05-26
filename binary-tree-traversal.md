@@ -78,5 +78,38 @@ public class Solution {
 
 非递归实现
 
+    要保证根结点在左孩子和右孩子访问之后才能访问，因此对于任一结点P，先将其入栈。如果P不存在左孩子和右孩子，则可以直接访问它；或者P存 在左孩子或者右孩子，但是其左孩子和右孩子都已被访问过了，则同样可以直接访问该结点。若非上述两种情况，则将P的右孩子和左孩子依次入栈，这样就保证了 每次取栈顶元素的时候，左孩子在右孩子前面被访问，左孩子和右孩子都在根结点前面被访问。
+
+```java
+public class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        if(root==null) return result;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode prev = null;
+        TreeNode curr = root;
+        stack.push(root);
+        while(!stack.isEmpty()){
+            curr = stack.peek();
+            if(curr.left==null && curr.right==null){  //curr doesn't have child, access curr
+                result.add(curr.val);
+                prev = curr;
+                stack.pop();
+            }
+            else if(prev!=null && (prev==curr.left || prev==curr.right)){  //curr has child but child has been accessed already, access curr
+                result.add(curr.val);
+                prev = curr;
+                stack.pop();
+            }
+            else{  //curr has child that hasn't been accessed first
+                if(curr.right!=null) stack.push(curr.right);
+                if(curr.left!=null) stack.push(curr.left);
+            }
+        }
+        return result;
+    }
+}
+```
+
 
 
