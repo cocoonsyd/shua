@@ -45,9 +45,7 @@ public class Solution {
     public ArrayList<Integer> preorderTraversal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<Integer>();
         // null or leaf
-        if (root == null) {
-            return result;
-        }
+        if (root == null) return result;
         // Divide
         ArrayList<Integer> left = preorderTraversal(root.left);
         ArrayList<Integer> right = preorderTraversal(root.right);
@@ -59,4 +57,6 @@ public class Solution {
     }
 }
 ```
+
+
 
