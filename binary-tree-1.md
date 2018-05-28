@@ -65,5 +65,36 @@ public class Solution {
 }
 ```
 
+## Lowest Common Ancestor
 
+[https://www.lintcode.com/problem/lowest-common-ancestor/](https://www.lintcode.com/problem/lowest-common-ancestor/)
+
+```java
+public class Solution {
+    /*
+     * @param root: The root of the binary search tree.
+     * @param A: A TreeNode in a Binary.
+     * @param B: A TreeNode in a Binary.
+     * @return: Return the least common ancestor(LCA) of the two nodes.
+     */
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode A, TreeNode B) {
+        // write your code here
+        if(root==null || root==A || root==B) return root;
+        
+        TreeNode left = lowestCommonAncestor(root.left, A, B);
+        TreeNode right = lowestCommonAncestor(root.right, A, B);
+        
+        // A and B exist in left/right subtree respectively
+        if(left!=null && right!=null) return root; //got LCA
+        
+        // A or B exist in left subtree
+        if(left!=null) return left;
+        
+        // A or B exist in right subtree
+        if(right!=null) return right;
+        
+        return null;
+    }
+}
+```
 
