@@ -2,7 +2,7 @@
 
 ### Traverse // Divide & Conquer // Non-Recursion
 
-![](.gitbook/assets/image.png)
+![](../.gitbook/assets/image.png)
 
 ####  Traverse vs Divide Conquer
 
