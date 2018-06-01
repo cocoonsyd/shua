@@ -102,7 +102,7 @@ public class Solution {
 
 [https://www.lintcode.com/problem/flatten-binary-tree-to-linked-list/](https://www.lintcode.com/problem/flatten-binary-tree-to-linked-list/)
 
-相当于是对二叉树进行一次前序遍历
+Version 1, traversal: 相当于是对二叉树进行一次前序遍历
 
 ```java
 public class Solution {
@@ -121,6 +121,35 @@ public class Solution {
         flatten(root.left);  //visit left sub-tree
         flatten(right);  //visit right sub-tree
         
+    }
+}
+```
+
+Version 2, divide & conquer
+
+```java
+public class Solution {
+
+    public void flatten(TreeNode root) {
+      flattenReturnLast(root);
+    }
+  
+    //flatten and return last node
+    private TreeNode flattenReturnLast(TreeNode root){
+      if(root==null) return null;
+      //flatten left sub-tree and right-subtree
+      TreeNode leftLast = flattenReturnLast(root.left);
+      TreeNode rightLast = flattenReturnLast(root.right);
+      if(leftLast!=null){
+        //connect flattened right to end of flattened left
+        leftLast.right=root.right;
+        //connect flattened left to right of root
+        root.right = root.left;
+        root.left=null;
+      }
+      if(rightLast!=null) return rightLast;
+      if(leftLast!=null) return leftLast;
+      return root;
     }
 }
 ```
