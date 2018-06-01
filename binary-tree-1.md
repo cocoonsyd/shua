@@ -98,3 +98,30 @@ public class Solution {
 }
 ```
 
+##  Flatten Binary Tree to Linked List
+
+[https://www.lintcode.com/problem/flatten-binary-tree-to-linked-list/](https://www.lintcode.com/problem/flatten-binary-tree-to-linked-list/)
+
+相当于是对二叉树进行一次前序遍历
+
+```java
+public class Solution {
+
+    private TreeNode lastNode = null;
+     
+    public void flatten(TreeNode root) {
+        if(root==null) return;
+        if(lastNode != null){
+        //connect current node to right of last visited node
+          lastNode.left=null;
+          lastNode.right=root;
+        }
+        lastNode=root;  //visit root, set it as last visited node
+        TreeNode right=root.right;  //make a copy of right sub-tree, as root.right will be modified when flattening left sub-tree
+        flatten(root.left);  //visit left sub-tree
+        flatten(right);  //visit right sub-tree
+        
+    }
+}
+```
+
