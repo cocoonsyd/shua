@@ -47,3 +47,49 @@ public class Solution {
 }
 ```
 
+## Inorder successor of BST
+
+[https://www.lintcode.com/problem/inorder-successor-in-binary-search-tree/](https://www.lintcode.com/problem/inorder-successor-in-binary-search-tree/)
+
+思路
+
+观察BST特点可以总结出，一个BST node p的inorder successor位置有如下特征：
+
+1. 不可能出现在p的左子树中
+2. 如果p有右子树，则其inorder successor在p的右子树中，是对右子树进行前序遍历第一个节点
+3. 如果p没有右子树，则其inorder successor是p的某个ancestor，是从p往上走遇到的第一个比p大的ancestor，也就是从root往p走遇到的最后一个比p大的ancestor
+4. 如果p没有右子树也没有比p大的ancestor，则p是整个BST最大的node，不存在inorder successor
+
+```java
+public class Solution {
+    /*
+     * @param root: The root of the BST.
+     * @param p: You need find the successor node of p.
+     * @return: Successor of p.
+     */
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+    
+      if(root==null || p==null) return null;
+      
+      // if p has right sub-tree, then return first inorder node of right sub-tree
+      if(p.right!=null){
+        TreeNode curr=p.right;
+        while(curr.left!=null) curr=curr.left;
+        return curr;
+      }
+      
+      //if p doesn't have right sub-tree, then go up and find first ancestor that is larger than p
+        TreeNode successor=null;
+        while(root!=p && root!=null){
+          if(p.val>=root.val) root=root.right;
+          else {
+            successor=root;
+            root=root.left;
+          }
+        }
+        return successor;
+    }
+    
+}
+```
+
