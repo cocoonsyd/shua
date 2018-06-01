@@ -69,23 +69,23 @@ public class Solution {
      */
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
     
-      if(root==null || p==null) return null;
+        if(root==null || p==null) return null;
       
-      // if p has right sub-tree, then return first inorder node of right sub-tree
-      if(p.right!=null){
-        TreeNode curr=p.right;
-        while(curr.left!=null) curr=curr.left;
-        return curr;
-      }
+  // if p has right sub-tree, then return first inorder node of right sub-tree
+        if(p.right!=null){
+          TreeNode curr=p.right;
+          while(curr.left!=null) curr=curr.left;
+          return curr;
+        }
       
-      //if p doesn't have right sub-tree, then go up and find first ancestor that is larger than p
+  //if p doesn't have right sub-tree, then find last/closest ancestor that is larger than p
         TreeNode successor=null;
         while(root!=p && root!=null){
-          if(p.val>=root.val) root=root.right;
-          else {
+          if(root.val>p.val) {
             successor=root;
             root=root.left;
           }
+          else root=root.right;
         }
         return successor;
     }
