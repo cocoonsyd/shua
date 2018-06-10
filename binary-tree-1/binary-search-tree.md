@@ -93,3 +93,58 @@ public class Solution {
 }
 ```
 
+## Insert Node in a Binary Search Tree
+
+Given a binary search tree and a new tree node, insert the node into the tree. You should keep the tree still be a valid binary search tree.
+
+Recursion:
+
+```java
+public class Solution {
+    /*
+     * @param root: The root of the binary search tree.
+     * @param node: insert this node into the binary search tree
+     * @return: The root of the new binary search tree.
+     */
+    public TreeNode insertNode(TreeNode root, TreeNode node) {
+        // write your code here
+        if(root==null){
+            return node;
+        }
+        if(node.val<root.val) root.left=insertNode(root.left,node);
+        else root.right=insertNode(root.right,node);
+        return root;
+    }
+}
+```
+
+Non-Recursion:
+
+```java
+public class Solution {
+    /*
+     * @param root: The root of the binary search tree.
+     * @param node: insert this node into the binary search tree
+     * @return: The root of the new binary search tree.
+     */
+    public TreeNode insertNode(TreeNode root, TreeNode node) {
+        // write your code here
+        if(root==null) return node;
+        TreeNode last=root;
+        while(last.left!=null || last.right!=null){
+            if(node.val<last.val) {
+                if(last.left!=null) last=last.left;
+                else break;
+            }
+            else {
+                if(last.right!=null) last=last.right;
+                else break;
+            }
+        }
+        if(node.val<last.val) last.left=node;
+        else last.right=node;
+        return root;
+    }
+}
+```
+
