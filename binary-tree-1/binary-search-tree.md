@@ -10,9 +10,9 @@ Version 1: Traverse
 
 （1）左子树是BST
 
-（2）当前root节点大于左子树root（除非是遍历整个树中遇到的的第一个node则不需要检验）
+（2）当前root节点大于左子树中最大（即中序遍历最后一个）节点（除非是遍历整个树中遇到的的第一个node则不需要检验）
 
-（3）右子树是BST（过程中同时会检验右子树的root大于当前root）
+（3）右子树是BST（过程中同时会检验右子树中最小（即中序遍历第一个）节点大于当前root）
 
 ```java
 public class Solution {
