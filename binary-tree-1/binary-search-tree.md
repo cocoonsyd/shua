@@ -95,6 +95,8 @@ public class Solution {
 
 ## Insert Node in a Binary Search Tree
 
+[https://www.lintcode.com/en/problem/insert-node-in-a-binary-search-tree/](https://www.lintcode.com/en/problem/insert-node-in-a-binary-search-tree/)
+
 Given a binary search tree and a new tree node, insert the node into the tree. You should keep the tree still be a valid binary search tree.
 
 Recursion:
@@ -143,6 +145,55 @@ public class Solution {
         }
         if(node.val<last.val) last.left=node;
         else last.right=node;
+        return root;
+    }
+}
+```
+
+## Remove Node in Binary Search Tree
+
+[https://www.lintcode.com/problem/remove-node-in-binary-search-tree/](https://www.lintcode.com/problem/remove-node-in-binary-search-tree/)
+
+Given a root of Binary Search Tree with unique value for each node. Remove the node with given value. If there is no such a node with given value in the binary search tree, do nothing. You should keep the tree still a binary search tree after removal.
+
+Hibbard deletion algorithm:
+
+[ http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/BST-delete.html](%20http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/BST-delete.html
+)
+
+![](../.gitbook/assets/image%20%281%29.png)
+
+```java
+public class Solution {
+    /*
+     * @param root: The root of the binary search tree.
+     * @param value: Remove the node with given value.
+     * @return: The root of the binary search tree after removal.
+     */
+    public TreeNode removeNode(TreeNode root, int value) {
+        // write your code here
+        if(root==null) return null;
+        
+        //node to delete is in left subtree
+        if(value<root.val) root.left=removeNode(root.left, value);
+        
+        //node to delete is in right subtree
+        else if(value>root.val) root.right=removeNode(root.right, value);
+        
+        //found node to delete
+        else{
+            //if one subtree is null, simply replace
+            if(root.left==null) return root.right;
+            if(root.right==null) return root.left;
+            
+            //if has both left&right subtree,
+            //replace with successor (min in right subtree)
+            TreeNode minInRight=root.right;
+            while(minInRight.left!=null) minInRight=minInRight.left; //find successor
+            minInRight.right=removeNode(root.right, minInRight.val);
+            minInRight.left=root.left;
+            root=minInRight;
+        }
         return root;
     }
 }
