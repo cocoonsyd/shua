@@ -135,6 +135,7 @@ public class Solution {
             root = node;
             return root;
         }
+        
         TreeNode tmp = root;
         TreeNode last = null;
         while (tmp != null) {
@@ -145,12 +146,11 @@ public class Solution {
                 tmp = tmp.right;
             }
         }
-        if (last != null) {
-            if (last.val > node.val) {
-                last.left = node;
-            } else {
-                last.right = node;
-            }
+        
+        if (last.val > node.val) {
+            last.left = node;
+        } else {
+            last.right = node;
         }
         return root;
     }
