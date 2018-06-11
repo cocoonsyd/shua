@@ -131,20 +131,27 @@ public class Solution {
      */
     public TreeNode insertNode(TreeNode root, TreeNode node) {
         // write your code here
-        if(root==null) return node;
-        TreeNode last=root;
-        while(last.left!=null || last.right!=null){
-            if(node.val<last.val) {
-                if(last.left!=null) last=last.left;
-                else break;
-            }
-            else {
-                if(last.right!=null) last=last.right;
-                else break;
+        if (root == null) {
+            root = node;
+            return root;
+        }
+        TreeNode tmp = root;
+        TreeNode last = null;
+        while (tmp != null) {
+            last = tmp;
+            if (tmp.val > node.val) {
+                tmp = tmp.left;
+            } else {
+                tmp = tmp.right;
             }
         }
-        if(node.val<last.val) last.left=node;
-        else last.right=node;
+        if (last != null) {
+            if (last.val > node.val) {
+                last.left = node;
+            } else {
+                last.right = node;
+            }
+        }
         return root;
     }
 }
