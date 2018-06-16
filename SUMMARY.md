@@ -6,4 +6,5 @@
   * [Binary Search Tree](binary-tree-1/binary-search-tree.md)
 * [Breadth First Search](breadth-first-search/README.md)
   * [BFS on Binary Tree](breadth-first-search/bfs-on-binary-tree.md)
+  * [BFS on Graph](breadth-first-search/bfs-on-graph.md)
 
