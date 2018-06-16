@@ -6,5 +6,5 @@
 
 Given a binary tree, return the level order traversal of its nodes' values. \(ie, from left to right, level by level\).
 
-
+![](../.gitbook/assets/screenshot-2018-06-16-at-11.15.49-am.png)
 
