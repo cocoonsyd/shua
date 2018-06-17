@@ -55,9 +55,13 @@ public class Solution {
 ```
 
 ## Clone Graph
-### 方法1：Serialize then De-Serialize
+### 方法1
+Serialize then De-Serialize, 就可以得到原图的一个clone
+
+### 方法2
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDMyMTEzMDYsLTMyNzU1OTU3OCwxMj
-cxMzM3ODk1LC03MjU1NjE1MjMsLTE0NTMzMjA4MDksMTQ1NzI4
-MTE2OSwtNTI2Mjk3MzkxXX0=
+eyJoaXN0b3J5IjpbMTgxNjIzOTQ3MSwtMzI3NTU5NTc4LDEyNz
+EzMzc4OTUsLTcyNTU2MTUyMywtMTQ1MzMyMDgwOSwxNDU3Mjgx
+MTY5LC01MjYyOTczOTFdfQ==
 -->
