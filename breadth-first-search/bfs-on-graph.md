@@ -20,8 +20,10 @@ public class Solution {
         // write your code here
         if(n<=0) return false;
         if(edges.length!=n-1) return false;
+        // save graph as adjacency 
         HashMap<Integer, HashSet<Integer>> graph = initializeGraph(n, edges);
-        // BFS
+        
+        // BFS to check whether every node is connected to node 0
         Queue<Integer> queue = new LinkedList<Integer>();
         HashSet<Integer> hashset = new HashSet<Integer>();
         queue.add(0);
@@ -35,7 +37,7 @@ public class Solution {
                 }
             }
         }
-        return hashset.size()==n; // node 0 is connected to every node; meaning entire graph is conne
+        return hashset.size()==n; // node 0 is connected to every node; meaning entire graph is connected
     }
     private HashMap<Integer, HashSet<Integer>> initializeGraph(int n, int[][] edges){
         HashMap<Integer, HashSet<Integer>> graph = new HashMap<Integer, HashSet<Integer>>();
@@ -53,7 +55,7 @@ public class Solution {
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTcwMjA0MjIsMTI3MTMzNzg5NSwtNz
-I1NTYxNTIzLC0xNDUzMzIwODA5LDE0NTcyODExNjksLTUyNjI5
-NzM5MV19
+eyJoaXN0b3J5IjpbMTcyMDU2NTAzOCwxMjcxMzM3ODk1LC03Mj
+U1NjE1MjMsLTE0NTMzMjA4MDksMTQ1NzI4MTE2OSwtNTI2Mjk3
+MzkxXX0=
 -->
