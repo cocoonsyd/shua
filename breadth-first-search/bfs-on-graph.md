@@ -8,12 +8,13 @@ Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge 
 * 刚好n-1条边
 * 所有点互相联通
 （可以证明如果满足上面两个条件，则一定无环）
+
 ```java
 d
 ```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNDM1NTE5NSwtMTQ1MzMyMDgwOSwxND
+eyJoaXN0b3J5IjpbLTcyNTU2MTUyMywtMTQ1MzMyMDgwOSwxND
 U3MjgxMTY5LC01MjYyOTczOTFdfQ==
 -->
