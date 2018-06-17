@@ -10,11 +10,11 @@ Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge 
 （可以证明如果满足上面两个条件，则一定无环）
 
 ```java
-d
+
 ```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyNTU2MTUyMywtMTQ1MzMyMDgwOSwxND
-U3MjgxMTY5LC01MjYyOTczOTFdfQ==
+eyJoaXN0b3J5IjpbMTI3MTMzNzg5NSwtNzI1NTYxNTIzLC0xND
+UzMzIwODA5LDE0NTcyODExNjksLTUyNjI5NzM5MV19
 -->
