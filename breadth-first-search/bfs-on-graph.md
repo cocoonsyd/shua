@@ -20,7 +20,8 @@ public class Solution {
         // write your code here
         if(n<=0) return false;
         if(edges.length!=n-1) return false;
-        // save graph as adjacency 
+        
+        // save graph as Adjacency List
         HashMap<Integer, HashSet<Integer>> graph = initializeGraph(n, edges);
         
         // BFS to check whether every node is connected to node 0
@@ -55,7 +56,7 @@ public class Solution {
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyMDU2NTAzOCwxMjcxMzM3ODk1LC03Mj
-U1NjE1MjMsLTE0NTMzMjA4MDksMTQ1NzI4MTE2OSwtNTI2Mjk3
-MzkxXX0=
+eyJoaXN0b3J5IjpbLTE5Nzg3MDA3NDIsMTI3MTMzNzg5NSwtNz
+I1NTYxNTIzLC0xNDUzMzIwODA5LDE0NTcyODExNjksLTUyNjI5
+NzM5MV19
 -->
