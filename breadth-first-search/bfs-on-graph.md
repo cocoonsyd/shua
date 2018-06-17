@@ -56,12 +56,12 @@ public class Solution {
 
 ## Clone Graph
 ### 方法1
-Serialize then De-Serialize, 就可以得到原图的一个clone
+Serialize然后de-serialize, 就可以得到原图的一个clone
 
 ### 方法2
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNjIzOTQ3MSwtMzI3NTU5NTc4LDEyNz
+eyJoaXN0b3J5IjpbMTU4NDkxODMzMCwtMzI3NTU5NTc4LDEyNz
 EzMzc4OTUsLTcyNTU2MTUyMywtMTQ1MzMyMDgwOSwxNDU3Mjgx
 MTY5LC01MjYyOTczOTFdfQ==
 -->
