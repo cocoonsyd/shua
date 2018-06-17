@@ -17,7 +17,7 @@ public class Solution {
      */
     public TreeNode removeNode(TreeNode root, int value) {
         // write your code here
-        if(root==null) return null;
+        if(root==null) r
         if(value<root.val) root.left=removeNode(root.left, value);
         else if(value>root.val) root.right=removeNode(root.right, value);
         else{
@@ -33,6 +33,7 @@ public class Solution {
     }
 }    
 ```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg2NjYzMjE5XX0=
+eyJoaXN0b3J5IjpbLTUyNjI5NzM5MV19
 -->
