@@ -75,7 +75,15 @@ Serialize然后de-serialize, 就可以得到原图的一个clone
 3. Clone edges
 
 ```java
-
+/**
+ * Definition for undirected graph.
+ * class UndirectedGraphNode {
+ *     int label;
+ *     ArrayList<UndirectedGraphNode> neighbors;
+ *     UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+ * };
+ */
+ 
 public class Solution {
     /*
      * @param node: A undirected graph node
