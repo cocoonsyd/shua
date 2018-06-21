@@ -66,14 +66,12 @@ Serialize然后de-serialize, 就可以得到原图的一个clone
 
 ### 方法2
 
-(学习一种编程风格：“劝分不劝合”，将解决问题的过程分成几个小的步骤分别写，这样条例/逻辑更清晰)
+\(学习一种编程风格：“劝分不劝合”，将解决问题的过程分成几个小的步骤分别写，这样条例/逻辑更清晰\)
 
 分三步：
 
-1. List all nodes \(BFS\) 
-
+1. List all nodes \(BFS\)
 2. Clone nodes, save mapping from old node to new node
-
 3. Clone edges
 
 ```java
@@ -85,7 +83,7 @@ Serialize然后de-serialize, 就可以得到原图的一个clone
  *     UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
  * };
  */
- 
+
 public class Solution {
     /*
      * @param node: A undirected graph node
@@ -94,17 +92,17 @@ public class Solution {
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         // write your code here
         if(node==null) return null;
-        
+
         // use bfs to traverse the graph and get all nodes
         ArrayList<UndirectedGraphNode> allNodes = getAllNodes(node);
-        
+
         // copy nodes, store the old->new mapping information in a hash map
         HashMap<UndirectedGraphNode, UndirectedGraphNode> mapping = new HashMap<>();
         for(UndirectedGraphNode oldNode : allNodes){
             UndirectedGraphNode newNode = new UndirectedGraphNode(oldNode.label);
             mapping.put(oldNode, newNode);
         }
-        
+
         // copy neighbors(edges)
         for(UndirectedGraphNode oldNode : allNodes){
             UndirectedGraphNode newNode = mapping.get(oldNode);
@@ -112,15 +110,15 @@ public class Solution {
                 newNode.neighbors.add(mapping.get(neighbor));
             }
         }
-        
+
         return mapping.get(node);
     }
-    
+
     private ArrayList<UndirectedGraphNode> getAllNodes(UndirectedGraphNode node){
-        
+
         Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
         HashSet<UndirectedGraphNode> hashset = new HashSet<UndirectedGraphNode>();
-        
+
         queue.add(node);
         hashset.add(node);
         while(!queue.isEmpty()){
@@ -132,10 +130,9 @@ public class Solution {
                 }
             }
         }
-        
+
         return new ArrayList<UndirectedGraphNode>(hashset);
     }
 }
 ```
-
 

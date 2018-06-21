@@ -1,5 +1,7 @@
 # Breadth First Search
 
+BFS：由点及面，graph的连通性遍历，从一个点找到连通的所有点
+
 能用BFS解决的问题尽量用BFS，不要用DFS
 
 因为用recursion实现的DFS可能会造成stack overflow，而non-recursion的DFS很难写也很难懂
