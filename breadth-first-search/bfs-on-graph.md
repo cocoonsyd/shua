@@ -1,13 +1,17 @@
 # BFS on Graph
-## Graph Valid Tree
-https://www.lintcode.com/problem/graph-valid-tree/
 
-Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes), write a function to check whether these edges make up a valid tree.
+## Graph Valid Tree
+
+[https://www.lintcode.com/problem/graph-valid-tree/](https://www.lintcode.com/problem/graph-valid-tree/)
+
+Given n nodes labeled from 0 to n - 1 and a list of undirected edges \(each edge is a pair of nodes\), write a function to check whether these edges make up a valid tree.
 
 一个有n个点组成的图是一个树的条件：
+
 * 刚好n-1条边
 * 所有点互相联通
-（可以证明如果满足上面两个条件，则一定无环）
+
+  （可以证明如果满足上面两个条件，则一定无环）
 
 ```java
 public class Solution {
@@ -20,10 +24,10 @@ public class Solution {
         // write your code here
         if(n<=0) return false;
         if(edges.length!=n-1) return false;
-        
+
         // translate graph into Adjacency List representation
         HashMap<Integer, HashSet<Integer>> graph = initializeGraph(n, edges);
-        
+
         // BFS to check whether every node is connected to node 0
         Queue<Integer> queue = new LinkedList<Integer>();
         HashSet<Integer> hashset = new HashSet<Integer>();
@@ -55,13 +59,20 @@ public class Solution {
 ```
 
 ## Clone Graph
+
 ### 方法1
+
 Serialize然后de-serialize, 就可以得到原图的一个clone
 
 ### 方法2
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4NDkxODMzMCwtMzI3NTU5NTc4LDEyNz
-EzMzc4OTUsLTcyNTU2MTUyMywtMTQ1MzMyMDgwOSwxNDU3Mjgx
-MTY5LC01MjYyOTczOTFdfQ==
--->
+分三步：
+
+1. List all nodes \(BFS\) 
+
+2. Clone nodes, save mapping from old node to new node
+
+3. Clone edges
+
+
+
