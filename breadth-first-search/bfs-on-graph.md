@@ -74,5 +74,58 @@ Serialize然后de-serialize, 就可以得到原图的一个clone
 
 3. Clone edges
 
+```java
+
+public class Solution {
+    /*
+     * @param node: A undirected graph node
+     * @return: A undirected graph node
+     */
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        // write your code here
+        if(node==null) return null;
+        
+        // use bfs to traverse the graph and get all nodes
+        ArrayList<UndirectedGraphNode> allNodes = getAllNodes(node);
+        
+        // copy nodes, store the old->new mapping information in a hash map
+        HashMap<UndirectedGraphNode, UndirectedGraphNode> mapping = new HashMap<>();
+        for(UndirectedGraphNode oldNode : allNodes){
+            UndirectedGraphNode newNode = new UndirectedGraphNode(oldNode.label);
+            mapping.put(oldNode, newNode);
+        }
+        
+        // copy neighbors(edges)
+        for(UndirectedGraphNode oldNode : allNodes){
+            UndirectedGraphNode newNode = mapping.get(oldNode);
+            for(UndirectedGraphNode neighbor : oldNode.neighbors){
+                newNode.neighbors.add(mapping.get(neighbor));
+            }
+        }
+        
+        return mapping.get(node);
+    }
+    
+    private ArrayList<UndirectedGraphNode> getAllNodes(UndirectedGraphNode node){
+        
+        Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
+        HashSet<UndirectedGraphNode> hashset = new HashSet<UndirectedGraphNode>();
+        
+        queue.add(node);
+        hashset.add(node);
+        while(!queue.isEmpty()){
+            UndirectedGraphNode cur = queue.remove();
+            for(UndirectedGraphNode neighbor : cur.neighbors){
+                if(!hashset.contains(neighbor)){
+                    hashset.add(neighbor);
+                    queue.add(neighbor);
+                }
+            }
+        }
+        
+        return new ArrayList<UndirectedGraphNode>(hashset);
+    }
+}
+```
 
 
