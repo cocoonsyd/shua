@@ -205,5 +205,51 @@ public class Solution {
 
 [https://www.lintcode.com/problem/course-schedule](https://www.lintcode.com/problem/course-schedule)
 
-d
+```java
+public class Solution {
+    /*
+     * @param numCourses: a total of n courses
+     * @param prerequisites: a list of prerequisite pairs
+     * @return: true if can finish all courses or false
+     */
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        // write your code here
+        HashMap<Integer, HashSet<Integer>> courseToPrereq = new HashMap<>();
+        HashMap<Integer, HashSet<Integer>> prereqToCourse = new HashMap<>();
+        
+        for(int i=0;i<numCourses;i++){
+            HashSet<Integer> init1 = new HashSet<>();
+            HashSet<Integer> init2 = new HashSet<>();
+            courseToPrereq.put(i,init1);
+            prereqToCourse.put(i,init2);
+        }
+        for(int i=0;i<prerequisites.length;i++){
+            int course=prerequisites[i][0];
+            int prereq=prerequisites[i][1];
+            if(!courseToPrereq.get(course).contains(prereq)) courseToPrereq.get(course).add(prereq);
+            if(!prereqToCourse.get(prereq).contains(course)) prereqToCourse.get(prereq).add(course);
+        }
+        
+        // find all courses with no prereqs
+        Queue<Integer> prereqSatisfied = new LinkedList<Integer>();
+        for(int i=0;i<numCourses;i++){
+            if(courseToPrereq.get(i).size()==0) prereqSatisfied.add(i);
+        }
+        
+        ArrayList<Integer> courseTaken = new ArrayList<>();
+        
+        while(!prereqSatisfied.isEmpty()){
+            //take a course whose prereq is satisfied, and remove it from its dependants' prereq list
+            int course = prereqSatisfied.remove();
+            courseTaken.add(course);
+            for(int dependant : prereqToCourse.get(course)){
+                courseToPrereq.get(dependant).remove(course);
+                if(courseToPrereq.get(dependant).size()==0) prereqSatisfied.add(dependant);
+            }
+        }
+        return courseTaken.size()==numCourses;
+    }
+}
+```
+
 
