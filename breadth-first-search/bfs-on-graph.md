@@ -187,7 +187,7 @@ public class Solution {
             if(!indegree.containsKey(node)) indegree0.add(node);
         }
         
-        // BFS from node with indegree 0, and update indegree
+        // BFS from node with indegree 0, and update indegree & indegree0
         while(!indegree0.isEmpty()){
             DirectedGraphNode curr = indegree0.remove();
             result.add(curr);
