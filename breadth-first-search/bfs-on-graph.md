@@ -152,7 +152,56 @@ public class Solution {
 
 3. 从任意一个入度为0的点开始，每次拿出一个入度为0的点放到排序结果里，然后把它指向的所有点的入度减1，并把新产生的入度为0的点加到记录里
 
+```java
+/**
+ * Definition for Directed graph.
+ * class DirectedGraphNode {
+ *     int label;
+ *     ArrayList<DirectedGraphNode> neighbors;
+ *     DirectedGraphNode(int x) { label = x; neighbors = new ArrayList<DirectedGraphNode>(); }
+ * };
+ */
 
+public class Solution {
+    /*
+     * @param graph: A list of Directed graph node
+     * @return: Any topological order for the given graph.
+     */
+    public ArrayList<DirectedGraphNode> topSort(ArrayList<DirectedGraphNode> graph) {
+        // write your code here
+        if(graph==null || graph.size()==0) return null;
+        ArrayList<DirectedGraphNode> result = new ArrayList<>();
+        
+        // count indegree
+        HashMap<DirectedGraphNode, Integer> indegree = new HashMap<>();
+        for(DirectedGraphNode node : graph){
+            for(DirectedGraphNode neighbor : node.neighbors){
+                if(indegree.containsKey(neighbor)) indegree.put(neighbor, indegree.get(neighbor)+1);
+                else indegree.put(neighbor, 1);
+            }
+        }
+        
+        // find nodes with indegree of 0
+        Queue<DirectedGraphNode> indegree0 = new LinkedList<>();
+        for(DirectedGraphNode node : graph){
+            if(!indegree.containsKey(node)) indegree0.add(node);
+        }
+        
+        // BFS from node with indegree 0, and update indegree
+        while(!indegree0.isEmpty()){
+            DirectedGraphNode curr = indegree0.remove();
+            result.add(curr);
+            for(DirectedGraphNode node : curr.neighbors){
+                int newIndegree = indegree.get(node)-1;
+                indegree.put(node, newIndegree);
+                if(newIndegree==0) indegree0.add(node);
+            }
+        }
+        
+        return result;
+    }
+}
+```
 
 
 
