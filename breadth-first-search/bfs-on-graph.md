@@ -60,6 +60,8 @@ public class Solution {
 
 ## Clone Graph
 
+[http://www.lintcode.com/problem/clone-graph/](http://www.lintcode.com/problem/clone-graph/)
+
 ### 方法1
 
 Serialize然后de-serialize, 就可以得到原图的一个clone
@@ -135,4 +137,22 @@ public class Solution {
     }
 }
 ```
+
+## Topological Sorting
+
+[https://www.lintcode.com/problem/topological-sorting/](https://www.lintcode.com/problem/topological-sorting/)
+
+使用BFS做拓扑排序的步骤：
+
+\(每次取入度为0的点，可以保证满足依赖关系，因为入度为0的点所依赖的点已经被拿出放到result里了，即result中一定是按照依赖关系排序\)
+
+1. 统计所有点的入度（indegree）
+
+2. 找出并记录所有入度为0的点
+
+3. 从任意一个入度为0的点开始，每次拿出一个入度为0的点放到排序结果里，然后把它指向的所有点的入度减1，并把新产生的入度为0的点加到记录里
+
+
+
+
 
