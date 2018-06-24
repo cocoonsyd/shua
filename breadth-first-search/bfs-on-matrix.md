@@ -6,7 +6,11 @@
 
 https://www.lintcode.com/problem/number-of-islands/
 
-矩阵中的BFS，注意坐标变换数组的用法
+矩阵中的BFS，注意(1)check in boundary (2)坐标变换数组的用法
+
+另外可以新建一个return type class来表示坐标，这样就只用一个queue了
+
+https://www.jiuzhang.com/solutions/number-of-islands/
 
 ```java
 public class Solution {
