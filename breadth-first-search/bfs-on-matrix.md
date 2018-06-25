@@ -66,3 +66,56 @@ public class Solution {
     }
 }
 ```
+
+## Knight Shortest Path
+
+https://www.lintcode.com/problem/knight-shortest-path/
+
+```java
+public class Solution {
+    /**
+     * @param grid: a chessboard included 0 (false) and 1 (true)
+     * @param source: a point
+     * @param destination: a point
+     * @return: the shortest path 
+     */
+     
+    private boolean inBound(boolean[][] grid, int x, int y){
+        int height = grid.length;
+        int width = grid[0].length;
+        return x>=0 && y>=0 && x<height && y<width;
+    }
+    
+    public int shortestPath(boolean[][] grid, Point source, Point destination) {
+        // write your code here
+        int[] deltaX = {1,1,-1,-1,2,2,-2,-2};
+        int[] deltaY = {2,-2,2,-2,1,-1,1,-1};
+        
+        Queue<Point> q = new LinkedList<>();
+        q.add(source);
+        grid[source.x][source.y] = true;
+        int result = 0;
+        while(!q.isEmpty()){
+            int qSize=q.size();
+            System.out.println("qSize "+qSize);
+            for(int qs=0;qs<qSize;qs++){
+                Point p = q.remove();
+                if(p.x==destination.x && p.y==destination.y) return result;
+                for(int i=0;i<8;i++){
+                    int currX=p.x+deltaX[i];
+                    int currY=p.y+deltaY[i];
+                    if(inBound(grid,currX,currY) && !grid[currX][currY]){
+                        Point newPoint = new Point(currX, currY);
+                        q.add(newPoint);
+                        grid[newPoint.x][newPoint.y] = true;
+                    }
+                }
+            }
+        result++;
+        System.out.println("result "+result);
+        }
+        return -1;
+    }
+}
+```
+
