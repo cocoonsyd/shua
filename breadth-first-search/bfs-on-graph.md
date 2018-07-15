@@ -252,4 +252,64 @@ public class Solution {
 }
 ```
 
+## Word Ladder
+
+https://www.lintcode.com/problem/word-ladder/
+
+'''java
+public class Solution {
+    /*
+     * @param start: a string
+     * @param end: a string
+     * @param dict: a set of string
+     * @return: An integer
+     */
+    public int ladderLength(String start, String end, Set<String> dict) {
+        // write your code here
+        if(dict==null || dict.size()==0) return 0;
+        if(start.equals(end)) return 1;
+        
+        dict.add(start);
+        dict.add(end);
+        
+        HashSet<String> hash = new HashSet<>();
+        Queue<String> queue = new LinkedList<>();
+        hash.add(start);
+        queue.add(start);
+        
+        int length = 1;
+        while(!queue.isEmpty()){
+            length++;
+            int size = queue.size();
+            for(int i=0;i<size;i++){
+                String curr = queue.remove();
+                for(String next : getNext(curr, dict)){
+                    if(hash.contains(next)) continue;
+                    else{
+                        hash.add(next);
+                        queue.add(next);
+                    }
+                    if(next.equals(end)) return length;
+                }
+            }
+        }
+        return 0;
+    }
+    
+    private ArrayList<String> getNext(String curr, Set<String> dict){
+        ArrayList<String> result = new ArrayList<>();
+        for(char c='a';c<='z';c++){
+            for(int i=0;i<curr.length();i++){
+                if(c==curr.charAt(i)) continue;
+                char[] charArray = curr.toCharArray();
+                charArray[i]=c;
+                String newString = new String(charArray);
+                if(dict.contains(newString)) result.add(newString);
+            }
+        }
+        return result;
+    }
+}
+'''
+
 
