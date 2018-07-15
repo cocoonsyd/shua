@@ -256,7 +256,7 @@ public class Solution {
 
 https://www.lintcode.com/problem/word-ladder/
 
-'''java
+```java
 public class Solution {
     /*
      * @param start: a string
@@ -310,6 +310,6 @@ public class Solution {
         return result;
     }
 }
-'''
+```
 
 
