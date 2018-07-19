@@ -216,7 +216,7 @@ public class Solution {
         // write your code here
         HashMap<Integer, HashSet<Integer>> courseToPrereq = new HashMap<>();
         HashMap<Integer, HashSet<Integer>> prereqToCourse = new HashMap<>();
-        
+
         for(int i=0;i<numCourses;i++){
             HashSet<Integer> init1 = new HashSet<>();
             HashSet<Integer> init2 = new HashSet<>();
@@ -229,15 +229,15 @@ public class Solution {
             if(!courseToPrereq.get(course).contains(prereq)) courseToPrereq.get(course).add(prereq);
             if(!prereqToCourse.get(prereq).contains(course)) prereqToCourse.get(prereq).add(course);
         }
-        
+
         // find all courses with no prereqs
         Queue<Integer> prereqSatisfied = new LinkedList<Integer>();
         for(int i=0;i<numCourses;i++){
             if(courseToPrereq.get(i).size()==0) prereqSatisfied.add(i);
         }
-        
+
         ArrayList<Integer> courseTaken = new ArrayList<>();
-        
+
         while(!prereqSatisfied.isEmpty()){
             //take a course whose prereq is satisfied, and remove it from its dependants' prereq list
             int course = prereqSatisfied.remove();
@@ -254,7 +254,7 @@ public class Solution {
 
 ## Word Ladder
 
-https://www.lintcode.com/problem/word-ladder/
+[https://www.lintcode.com/problem/word-ladder/](https://www.lintcode.com/problem/word-ladder/)
 
 ```java
 public class Solution {
@@ -268,15 +268,15 @@ public class Solution {
         // write your code here
         if(dict==null || dict.size()==0) return 0;
         if(start.equals(end)) return 1;
-        
+
         dict.add(start);
         dict.add(end);
-        
+
         HashSet<String> hash = new HashSet<>();
         Queue<String> queue = new LinkedList<>();
         hash.add(start);
         queue.add(start);
-        
+
         int length = 1;
         while(!queue.isEmpty()){
             length++;
@@ -295,7 +295,7 @@ public class Solution {
         }
         return 0;
     }
-    
+
     private ArrayList<String> getNext(String curr, Set<String> dict){
         ArrayList<String> result = new ArrayList<>();
         for(char c='a';c<='z';c++){
@@ -311,5 +311,4 @@ public class Solution {
     }
 }
 ```
-
 

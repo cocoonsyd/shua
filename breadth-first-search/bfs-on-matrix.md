@@ -4,13 +4,13 @@
 
 ## Number of Islands
 
-https://www.lintcode.com/problem/number-of-islands/
+[https://www.lintcode.com/problem/number-of-islands/](https://www.lintcode.com/problem/number-of-islands/)
 
-矩阵中的BFS，注意(1)check in boundary (2)坐标变换数组的用法
+矩阵中的BFS，注意\(1\)check in boundary \(2\)坐标变换数组的用法
 
 另外可以新建一个return type class来表示坐标，这样就只用一个queue了
 
-https://www.jiuzhang.com/solutions/number-of-islands/
+[https://www.jiuzhang.com/solutions/number-of-islands/](https://www.jiuzhang.com/solutions/number-of-islands/)
 
 ```java
 public class Solution {
@@ -34,17 +34,17 @@ public class Solution {
         }
         return result;
     }
-    
+
     private void markByBFS(boolean[][] grid, int x, int y){
         // 坐标变换数组
         int[] deltaX = {1,-1,0,0};
         int[] deltaY = {0,0,1,-1};
-        
+
         Queue<Integer> qX = new LinkedList<>();
         Queue<Integer> qY = new LinkedList<>();
         qX.add(x);
         qY.add(y);
-        
+
         // BFS to mark all neighboring land
         while(!qX.isEmpty()){
             int currX=qX.remove();
@@ -58,7 +58,7 @@ public class Solution {
             }
         }
     }
-    
+
     private boolean inBound(boolean[][] grid, int x, int y){
         int height=grid.length;
         int width=grid[0].length;
@@ -69,7 +69,7 @@ public class Solution {
 
 ## Knight Shortest Path
 
-https://www.lintcode.com/problem/knight-shortest-path/
+[https://www.lintcode.com/problem/knight-shortest-path/](https://www.lintcode.com/problem/knight-shortest-path/)
 
 ```java
 public class Solution {
@@ -79,18 +79,18 @@ public class Solution {
      * @param destination: a point
      * @return: the shortest path 
      */
-     
+
     private boolean inBound(boolean[][] grid, int x, int y){
         int height = grid.length;
         int width = grid[0].length;
         return x>=0 && y>=0 && x<height && y<width;
     }
-    
+
     public int shortestPath(boolean[][] grid, Point source, Point destination) {
         // write your code here
         int[] deltaX = {1,1,-1,-1,2,2,-2,-2};
         int[] deltaY = {2,-2,2,-2,1,-1,1,-1};
-        
+
         Queue<Point> q = new LinkedList<>();
         q.add(source);
         grid[source.x][source.y] = true;

@@ -8,4 +8,6 @@
   * [BFS on Binary Tree](breadth-first-search/bfs-on-binary-tree.md)
   * [BFS on Graph](breadth-first-search/bfs-on-graph.md)
   * [BFS on Matrix](breadth-first-search/bfs-on-matrix.md)
+* [Depth First Search](depth-first-search/README.md)
+  * [组合搜索问题 Combination](depth-first-search/zu-he-sou-suo-wen-ti-combination.md)
 
