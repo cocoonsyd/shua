@@ -51,10 +51,7 @@ https://www.lintcode.com/problem/permutations-ii
 
 ```java
 public class Solution {
-    /*
-     * @param :  A list of integers
-     * @return: A list of unique permutations
-     */
+
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if(nums==null) return result;
@@ -70,9 +67,8 @@ public class Solution {
         }
         for(int i=0; i<nums.length; i++){
             if(visited[i]) continue;
-            if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
-                continue;
-            }
+            // 去重，即不允许跳过前一个相同的数字访问后一个数字。
+            if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) continue;
             permutation.add(nums[i]);
             visited[i]=true;
             helper(nums, permutation, visited, result);
