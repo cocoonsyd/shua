@@ -84,6 +84,8 @@ public class Solution {
         
         //递归的拆解
         for(int i=startIndex; i<candidates.length; i++){
+            //去除candidates数组中可能的重复
+            if(i!=0 && candidates[i]==candidates[i-1]) continue;
             combinations.add(candidates[i]);
             //这里startIndex从i开始而不是i+1，因为题目要求里说允许重复
             helper(combinations, candidates, target-candidates[i], i, results);
