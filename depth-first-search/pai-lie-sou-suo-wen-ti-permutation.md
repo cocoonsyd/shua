@@ -137,5 +137,13 @@ public class Solution {
 }
 ```
 
+## Word Ladder II
+
+https://www.lintcode.com/problem/word-ladder-ii/
+
+与Word Ladder对比，Word Ladder II不仅要找出最短路径的长度，还要列出所有的最短路径，所以需要BFS与DFS的结合
+
+先BFS计算出每个node到终点的距离，然后从起点到终点做DFS，保证每走一步都离终点更近了（保证最短路径）
+
 
 
