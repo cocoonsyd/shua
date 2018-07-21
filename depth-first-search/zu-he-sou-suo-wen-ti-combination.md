@@ -59,7 +59,39 @@ public class Solution {
 
 ## Combination Sum
 
-...
+https://www.lintcode.com/problem/combination-sum
+
+```java
+public class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        // write your code here
+        List<List<Integer>> results = new ArrayList<>();
+        if(candidates==null || candidates.length==0) return results;
+        Arrays.sort(candidates);
+        helper(new ArrayList<Integer>(), candidates, target, 0, results);
+        return results;
+    }
+    //递归的定义，找到所有以combination开头的组合，且后面的和为target
+    private void helper(ArrayList<Integer> combinations, int[] candidates, int target, int startIndex, List<List<Integer>> results){
+        //递归的出口
+        if(target==0){
+            //这里要用deep copy
+            results.add(new ArrayList<Integer>(combinations));
+            return;
+        }
+        
+        if(target<0) return;
+        
+        //递归的拆解
+        for(int i=startIndex; i<candidates.length; i++){
+            combinations.add(candidates[i]);
+            //这里startIndex从i开始而不是i+1，因为题目要求里说允许重复
+            helper(combinations, candidates, target-candidates[i], i, results);
+            combinations.remove(combinations.size()-1);
+        }
+    }
+}
+```
 
 
 
