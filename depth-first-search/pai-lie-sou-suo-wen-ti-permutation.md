@@ -79,3 +79,63 @@ public class Solution {
 }
 ```
 
+## N-Queens
+
+https://www.lintcode.com/problem/n-queens
+
+```java
+public class Solution {
+    /*
+     * @param n: The number of queens
+     * @return: All distinct solutions
+     */
+    public List<List<String>> solveNQueens(int n) {
+        // write your code here
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        
+        helper(new ArrayList<Integer>(), n, result);
+        
+        //convert result to chessboard
+        List<List<String>> chessboards = new ArrayList<>();
+        for(ArrayList<Integer> solution : result){
+            ArrayList<String> chessboard = new ArrayList<>();
+            for (int i = 0; i < solution.size(); i++) {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < solution.size(); j++) {
+                sb.append(j == solution.get(i) ? 'Q' : '.');
+            }
+            chessboard.add(sb.toString());
+         }
+        chessboards.add(chessboard);
+        }
+        return chessboards;  
+    }
+    
+    //DFS
+    private void helper(ArrayList<Integer> resultSoFar, int n, ArrayList<ArrayList<Integer>> result){
+        if(resultSoFar.size()==n){
+            result.add(new ArrayList<Integer>(resultSoFar));
+            return;
+        }
+        for(int i=0;i<n;i++){
+            if(!isValid(resultSoFar,i)) continue;
+            resultSoFar.add(i);
+            helper(resultSoFar, n, result);
+            resultSoFar.remove(resultSoFar.size()-1);
+        }
+    }
+    
+    //check new queen doesn't conflict with existing queens
+    private boolean isValid(ArrayList<Integer> resultSoFar, int cur){
+        for(int i=0;i<resultSoFar.size();i++){
+            if(cur==resultSoFar.get(i)) return false;
+            if(i+resultSoFar.get(i)==cur+resultSoFar.size()) return false;
+            if(i-resultSoFar.get(i)==resultSoFar.size()-cur) return false;
+        }
+        return true;
+    }
+}
+```
+
+
+
