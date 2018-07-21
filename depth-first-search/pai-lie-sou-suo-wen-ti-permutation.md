@@ -43,8 +43,7 @@ public class Solution {
 
 https://www.lintcode.com/problem/permutations-ii
 
-重点在于如何去重
-和没有重复元素的 Permutations 一题相比，只加了两句话：
+重点在于如何去重。和没有重复元素的 Permutations 一题相比，只加了两句话：
 
 * Arrays.sort(nums) // 排序，把所有重复的数凑到一起
 
