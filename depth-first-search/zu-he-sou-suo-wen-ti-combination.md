@@ -10,17 +10,17 @@
 
 一般来说，如果面试官不特别要求的话，DFS都可以使用递归\(Recursion\)的方式来实现。
 
-递归三要素是实现递归的重要步骤： 
+递归三要素是实现递归的重要步骤：
 
-• 递归的定义 
+• 递归的定义
 
 • 递归的拆解
 
- • 递归的出口
+• 递归的出口
 
 ## Subsets
 
-https://www.lintcode.com/problem/subsets
+[https://www.lintcode.com/problem/subsets](https://www.lintcode.com/problem/subsets)
 
 ```java
 public class Solution {
@@ -37,11 +37,11 @@ public class Solution {
         helper(new ArrayList<Integer>(), nums, 0, results);
         return results;
     }
-    
+
     // 递归三要素
     // 1. 递归的定义：在 Nums 中找到所有以 subset 开头的的集合，并放到 results
     private void helper(ArrayList<Integer> subset, int[] nums, int startIndex, List<List<Integer>> results){
-        
+
         // 2. 递归的拆解
         //need to use deep copy, cannot just results.add(subset)
         results.add(new ArrayList<Integer>(subset));
@@ -50,7 +50,7 @@ public class Solution {
             helper(subset, nums, i+1, results);
             subset.remove(subset.size()-1);
         }
-        
+
         // 3. 递归的出口
         // return;
     }
@@ -59,7 +59,7 @@ public class Solution {
 
 ## Combination Sum
 
-https://www.lintcode.com/problem/combination-sum
+[https://www.lintcode.com/problem/combination-sum](https://www.lintcode.com/problem/combination-sum)
 
 ```java
 public class Solution {
@@ -79,9 +79,9 @@ public class Solution {
             results.add(new ArrayList<Integer>(combinations));
             return;
         }
-        
+
         if(target<0) return;
-        
+
         //递归的拆解
         for(int i=startIndex; i<candidates.length; i++){
             //去除candidates数组中可能的重复
@@ -97,7 +97,7 @@ public class Solution {
 
 ## Palindrome Partitioning
 
-https://www.lintcode.com/problem/palindrome-partitioning/
+[https://www.lintcode.com/problem/palindrome-partitioning/](https://www.lintcode.com/problem/palindrome-partitioning/)
 
 找一个字符串所有可能的partitioning可以理解为找切割点的所有组合
 
@@ -112,13 +112,13 @@ public class Solution {
         helper(s, 0, new ArrayList<String>(), result);
         return result;
     }
-    
+
     private void helper(String s, int startIndex, ArrayList<String> partition, List<List<String>> result){
         if(startIndex==s.length()){
             result.add(new ArrayList<String>(partition));
             return;
         }
-        
+
         for(int i=startIndex; i<s.length(); i++){
             String subString = s.substring(startIndex, i+1);
             if(!isPalindrome(subString)) continue;
@@ -127,7 +127,7 @@ public class Solution {
             partition.remove(partition.size()-1);
         }
     }
-    
+
     private boolean isPalindrome(String s){
         for(int i=0, j=s.length()-1; i<j; i++,j--){
             if(s.charAt(i)!=s.charAt(j)) return false;
@@ -136,5 +136,4 @@ public class Solution {
     }
 }
 ```
-
 
