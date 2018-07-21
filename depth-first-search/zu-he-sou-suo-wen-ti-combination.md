@@ -95,5 +95,46 @@ public class Solution {
 }
 ```
 
+## Palindrome Partitioning
+
+https://www.lintcode.com/problem/palindrome-partitioning/
+
+找一个字符串所有可能的partitioning可以理解为找切割点的所有组合
+
+一个长度为n的字符串有n-1个可能的切割点
+
+```java
+public class Solution {
+    public List<List<String>> partition(String s) {
+        // write your code here
+        List<List<String>> result = new ArrayList<>();
+        if(s==null || s.length()==0) return result;
+        helper(s, 0, new ArrayList<String>(), result);
+        return result;
+    }
+    
+    private void helper(String s, int startIndex, ArrayList<String> partition, List<List<String>> result){
+        if(startIndex==s.length()){
+            result.add(new ArrayList<String>(partition));
+            return;
+        }
+        
+        for(int i=startIndex; i<s.length(); i++){
+            String subString = s.substring(startIndex, i+1);
+            if(!isPalindrome(subString)) continue;
+            partition.add(subString);
+            helper(s, i+1, partition, result);
+            partition.remove(partition.size()-1);
+        }
+    }
+    
+    private boolean isPalindrome(String s){
+        for(int i=0, j=s.length()-1; i<j; i++,j--){
+            if(s.charAt(i)!=s.charAt(j)) return false;
+        }
+        return true;
+    }
+}
+```
 
 
