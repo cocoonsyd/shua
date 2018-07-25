@@ -145,5 +145,74 @@ https://www.lintcode.com/problem/word-ladder-ii/
 
 先BFS计算出每个node到终点的距离，然后从起点到终点做DFS，保证每走一步都离终点更近了（保证最短路径）
 
+``java
+public class Solution {
 
+    public List<List<String>> findLadders(String start, String end, Set<String> dict) {
+        
+        List<List<String>> result = new ArrayList<>();
+        HashMap<String, Integer> distToEnd = new HashMap<>();
+        
+        dict.add(start);
+        dict.add(end);
+        
+        bfs(dict, end, distToEnd);
+        dfs(dict, end, distToEnd, start, new ArrayList<String>(), result);
+        
+        return result;
+    }
+    
+    private void bfs(Set<String> dict, String end, HashMap<String, Integer> distToEnd){
+        Queue<String> queue = new LinkedList<>();
+        int dist=0;
+        queue.add(end);
+        distToEnd.put(end,dist);
+        while(!queue.isEmpty()){
+            dist++;
+            int size=queue.size();
+            for(int i=0;i<size;i++){
+                String curr = queue.remove();
+                for(String next : nextWords(curr,dict)){
+                    if(!distToEnd.containsKey(next)) {
+                        queue.add(next);
+                        distToEnd.put(next,dist);
+                    }
+                }
+            }
+        }
+    }
+    
+    private void dfs(Set<String> dict, String end, HashMap<String, Integer> distToEnd, String curr, List<String> path, List<List<String>> result){
+    
+        path.add(curr);
+        
+        if(curr.equals(end)){
+            // 注意这里需要用deep copy！不能直接result.add(path)！
+            result.add(new ArrayList<String>(path));
+        }
+        else{
+            for(String next : nextWords(curr, dict)){
+                if(distToEnd.containsKey(next) && distToEnd.get(next)==distToEnd.get(curr)-1){
+                    dfs(dict, end, distToEnd, next, path, result);
+                }
+            }
+        }
+        
+        path.remove(path.size()-1);
+    }
+    
+    private List<String> nextWords(String word, Set<String> dict){
+        List<String> result = new ArrayList<>();
+        for(int i=0;i<word.length();i++){
+            for(char c='a';c<='z';c++){
+                if(c!=word.charAt(i)){
+                    String newWord = word.substring(0,i) + c + word.substring(i+1);
+                    if(dict.contains(newWord)) result.add(newWord);
+                }
+            }
+        }
+        return result;
+    }
+}
+```
 
