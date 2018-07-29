@@ -11,4 +11,6 @@
 * [Depth First Search](depth-first-search/README.md)
   * [组合搜索问题 Combination](depth-first-search/zu-he-sou-suo-wen-ti-combination.md)
   * [排列搜索问题 Permutation](depth-first-search/pai-lie-sou-suo-wen-ti-permutation.md)
+* [Linked List & Array](linked-list-and-array/README.md)
+  * [Dummy Node](linked-list-and-array/dummy-node.md)
 
