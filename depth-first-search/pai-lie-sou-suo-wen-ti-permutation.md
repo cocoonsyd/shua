@@ -8,7 +8,7 @@
 
 ## Permutations
 
-https://www.lintcode.com/problem/permutations/
+[https://www.lintcode.com/problem/permutations/](https://www.lintcode.com/problem/permutations/)
 
 ```java
 public class Solution {
@@ -16,11 +16,11 @@ public class Solution {
         // write your code here
         List<List<Integer>> result = new ArrayList<>();
         if(nums==null) return result;
-        
+
         helper(nums, new ArrayList<Integer>(), new boolean[nums.length], result);
         return result;
     }
-    
+
     //find all permutations starting with ArrayList "permutation", visited elements in "permutation" are marked in "visited" array
     private void helper(int[] nums, ArrayList<Integer> permutation, boolean[] visited, List<List<Integer>> result){
         if(permutation.size()==nums.length){
@@ -41,13 +41,12 @@ public class Solution {
 
 ## Permutations II
 
-https://www.lintcode.com/problem/permutations-ii
+[https://www.lintcode.com/problem/permutations-ii](https://www.lintcode.com/problem/permutations-ii)
 
 重点在于如何去重。和没有重复元素的 Permutations 一题相比，只加了两句话：
 
-* Arrays.sort(nums) // 排序，把所有重复的数凑到一起
-
-* if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) { continue; } // 跳过会造成重复的情况
+* Arrays.sort\(nums\) // 排序，把所有重复的数凑到一起
+* if \(i &gt; 0 && nums\[i\] == nums\[i - 1\] && !visited\[i - 1\]\) { continue; } // 跳过会造成重复的情况
 
 ```java
 public class Solution {
@@ -59,7 +58,7 @@ public class Solution {
         helper(nums, new ArrayList<Integer>(), new boolean[nums.length], result);
         return result;
     }
-    
+
     private void helper(int[] nums, ArrayList<Integer> permutation, boolean[] visited, List<List<Integer>> result){
         if(permutation.size()==nums.length){
             result.add(new ArrayList<Integer>(permutation));
@@ -81,7 +80,7 @@ public class Solution {
 
 ## N-Queens
 
-https://www.lintcode.com/problem/n-queens
+[https://www.lintcode.com/problem/n-queens](https://www.lintcode.com/problem/n-queens)
 
 ```java
 public class Solution {
@@ -92,9 +91,9 @@ public class Solution {
     public List<List<String>> solveNQueens(int n) {
         // write your code here
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-        
+
         helper(new ArrayList<Integer>(), n, result);
-        
+
         //convert result to chessboard
         List<List<String>> chessboards = new ArrayList<>();
         for(ArrayList<Integer> solution : result){
@@ -110,7 +109,7 @@ public class Solution {
         }
         return chessboards;  
     }
-    
+
     //DFS
     private void helper(ArrayList<Integer> resultSoFar, int n, ArrayList<ArrayList<Integer>> result){
         if(resultSoFar.size()==n){
@@ -124,7 +123,7 @@ public class Solution {
             resultSoFar.remove(resultSoFar.size()-1);
         }
     }
-    
+
     //check new queen doesn't conflict with existing queens
     private boolean isValid(ArrayList<Integer> resultSoFar, int cur){
         for(int i=0;i<resultSoFar.size();i++){
@@ -139,7 +138,7 @@ public class Solution {
 
 ## Word Ladder II
 
-https://www.lintcode.com/problem/word-ladder-ii/
+[https://www.lintcode.com/problem/word-ladder-ii/](https://www.lintcode.com/problem/word-ladder-ii/)
 
 与Word Ladder对比，Word Ladder II不仅要找出最短路径的长度，还要列出所有的最短路径，所以需要BFS与DFS的结合
 
@@ -149,19 +148,19 @@ https://www.lintcode.com/problem/word-ladder-ii/
 public class Solution {
 
     public List<List<String>> findLadders(String start, String end, Set<String> dict) {
-        
+
         List<List<String>> result = new ArrayList<>();
         HashMap<String, Integer> distToEnd = new HashMap<>();
-        
+
         dict.add(start);
         dict.add(end);
-        
+
         bfs(dict, end, distToEnd);
         dfs(dict, end, distToEnd, start, new ArrayList<String>(), result);
-        
+
         return result;
     }
-    
+
     private void bfs(Set<String> dict, String end, HashMap<String, Integer> distToEnd){
         Queue<String> queue = new LinkedList<>();
         int dist=0;
@@ -181,11 +180,11 @@ public class Solution {
             }
         }
     }
-    
+
     private void dfs(Set<String> dict, String end, HashMap<String, Integer> distToEnd, String curr, List<String> path, List<List<String>> result){
-    
+
         path.add(curr);
-        
+
         if(curr.equals(end)){
             // 注意这里需要用deep copy！不能直接result.add(path)！
             result.add(new ArrayList<String>(path));
@@ -197,10 +196,10 @@ public class Solution {
                 }
             }
         }
-        
+
         path.remove(path.size()-1);
     }
-    
+
     private List<String> nextWords(String word, Set<String> dict){
         List<String> result = new ArrayList<>();
         for(int i=0;i<word.length();i++){
