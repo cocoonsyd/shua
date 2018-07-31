@@ -66,6 +66,8 @@ public class Solution {
 
 https://www.lintcode.com/problem/partition-list/
 
+不要忘记把结果中最后一个node的next设为null！
+
 ```java
 public class Solution {
     /**
