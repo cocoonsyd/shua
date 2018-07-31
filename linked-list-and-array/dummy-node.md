@@ -62,3 +62,41 @@ public class Solution {
 }
 ```
 
+## Partition List
+
+https://www.lintcode.com/problem/partition-list/
+
+```java
+public class Solution {
+    /**
+     * @param head: The first node of linked list
+     * @param x: An integer
+     * @return: A ListNode
+     */
+    public ListNode partition(ListNode head, int x) {
+        // write your code here
+        ListNode dummyhead1 = new ListNode(0);
+        ListNode dummyhead2 = new ListNode(x);
+        ListNode cur1 = dummyhead1;
+        ListNode cur2 = dummyhead2;
+        ListNode cur = head;
+        while(cur!=null){
+            if(cur.val<x){
+                cur1.next=cur;
+                cur1=cur;
+            }
+            else{
+                cur2.next=cur;
+                cur2=cur;
+            }
+            cur=cur.next;
+        }
+        
+        // Don't forget this!!!!!!!!!!!!!!
+        cur2.next=null;
+        
+        cur1.next=dummyhead2.next;
+        return dummyhead1.next;
+    }
+}
+```
