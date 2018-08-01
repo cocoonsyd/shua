@@ -145,3 +145,51 @@ public class Solution {
     }
 }
 ```
+
+## Swap Two Nodes in Linked List
+
+https://www.lintcode.com/problem/swap-two-nodes-in-linked-list
+
+```java
+public class Solution {
+    public ListNode swapNodes(ListNode head, int v1, int v2) {
+        // write your code here
+        if(head==null || v1==v2) return head;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode before_v1 = null;
+        ListNode before_v2 = null;
+        ListNode curr = dummy;
+        while(curr.next!=null && (before_v1==null || before_v2==null)){
+            if(curr.next.val==v1) before_v1 = curr;
+            if(curr.next.val==v2) before_v2 = curr;
+            curr = curr.next;
+        }
+        
+        if(before_v1!=null && before_v2!=null){
+            ListNode v1_node = before_v1.next;
+            ListNode v2_node = before_v2.next;
+            ListNode after_v1 = v1_node.next;
+            ListNode after_v2 = v2_node.next;
+            if(v1_node.next==v2_node){
+                before_v1.next = v2_node;
+                v2_node.next = v1_node;
+                v1_node.next = after_v2;
+            }
+            else if(v2_node.next==v1_node){
+                before_v2.next = v1_node;
+                v1_node.next = v2_node;
+                v2_node.next = after_v1;
+            }
+            else{
+                before_v1.next = v2_node;
+                before_v2.next = v1_node;
+                v1_node.next = after_v2;
+                v2_node.next = after_v1;
+            }
+        }
+        
+        return dummy.next;
+    }
+}
+```
