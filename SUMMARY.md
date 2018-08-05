@@ -13,4 +13,5 @@
   * [排列搜索问题 Permutation](depth-first-search/pai-lie-sou-suo-wen-ti-permutation.md)
 * [Linked List & Array](linked-list-and-array/README.md)
   * [Dummy Node](linked-list-and-array/dummy-node.md)
+  * [Sort List](linked-list-and-array/sort-list.md)
 

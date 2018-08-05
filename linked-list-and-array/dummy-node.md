@@ -12,10 +12,9 @@ return dummy.next
 
 ## Reverse Nodes in k-Groups
 
-https://www.lintcode.com/problem/reverse-nodes-in-k-group/
+[https://www.lintcode.com/problem/reverse-nodes-in-k-group/](https://www.lintcode.com/problem/reverse-nodes-in-k-group/)
 
 ```java
-
 public class Solution {
     /**
      * @param head: a ListNode
@@ -46,7 +45,7 @@ public class Solution {
         }
         return dummy.next;
     }
-    
+
     private ListNode reverse(ListNode prev, ListNode first, ListNode last){
         ListNode next=last.next;
         ListNode curr=first;
@@ -64,7 +63,7 @@ public class Solution {
 
 ## Partition List
 
-https://www.lintcode.com/problem/partition-list/
+[https://www.lintcode.com/problem/partition-list/](https://www.lintcode.com/problem/partition-list/)
 
 不要忘记把结果中最后一个node的next设为null！
 
@@ -93,10 +92,10 @@ public class Solution {
             }
             cur=cur.next;
         }
-        
+
         // Don't forget this!!!!!!!!!!!!!!
         cur2.next=null;
-        
+
         cur1.next=dummyhead2.next;
         return dummyhead1.next;
     }
@@ -105,19 +104,19 @@ public class Solution {
 
 ## Reverse Linked List II
 
-https://www.lintcode.com/problem/reverse-linked-list-ii/
+[https://www.lintcode.com/problem/reverse-linked-list-ii/](https://www.lintcode.com/problem/reverse-linked-list-ii/)
 
 ```java
 public class Solution {
 
     public ListNode reverseBetween(ListNode head, int m, int n) {
-        
+
         if(m>=n || head==null) return head;
-        
+
         // add dummy node in front
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        
+
         //find node before m and node m
         ListNode cur = dummy;
         for(int i=1;i<m;i++){
@@ -125,7 +124,7 @@ public class Solution {
         }
         ListNode beforeM=cur;
         ListNode nodeM = beforeM.next;
-        
+
         //reverse from m to n
         cur=nodeM;
         ListNode prev=null;
@@ -135,20 +134,20 @@ public class Solution {
             prev=cur;
             cur=tmp;
         }
-        
+
         //now prev is node n and cur is node after n
         nodeM.next=cur;
         beforeM.next=prev;
-        
+
         return dummy.next;
-        
+
     }
 }
 ```
 
 ## Swap Two Nodes in Linked List
 
-https://www.lintcode.com/problem/swap-two-nodes-in-linked-list
+[https://www.lintcode.com/problem/swap-two-nodes-in-linked-list](https://www.lintcode.com/problem/swap-two-nodes-in-linked-list)
 
 ```java
 public class Solution {
@@ -165,7 +164,7 @@ public class Solution {
             if(curr.next.val==v2) before_v2 = curr;
             curr = curr.next;
         }
-        
+
         if(before_v1!=null && before_v2!=null){
             ListNode v1_node = before_v1.next;
             ListNode v2_node = before_v2.next;
@@ -188,8 +187,9 @@ public class Solution {
                 v2_node.next = after_v1;
             }
         }
-        
+
         return dummy.next;
     }
 }
 ```
+
