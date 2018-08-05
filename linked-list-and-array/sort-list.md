@@ -1,6 +1,6 @@
 # Sort List
 
-Merge Sort: 时间复杂度O\(nlogn\)，空间复杂度O\(n\)
+Merge Sort: 时间复杂度O\(nlogn\)，空间复杂度O\(n\) （指在Array上，这里在链表上不需要额外空间）
 
 Quick Sort: 时间复杂度O\(nlogn\)，空间复杂度O\(1\)
 
