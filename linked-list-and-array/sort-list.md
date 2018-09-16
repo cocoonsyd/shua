@@ -54,3 +54,45 @@ public class Solution {
     }
 }
 ```
+
+# Convert Sorted List to Binary Search Tree
+
+https://www.lintcode.com/problem/convert-sorted-list-to-binary-search-tree/
+
+```java
+public class Solution {
+    /*
+     * @param head: The first node of linked list.
+     * @return: a tree node
+     */
+    public TreeNode sortedListToBST(ListNode head) {
+        // write your code here
+        if(head==null) return null;
+        if(head.next==null) return new TreeNode(head.val);
+        ListNode dummy = new ListNode(0);
+        dummy.next=head;
+        ListNode beforeMid = findBeforeMid(dummy);
+        TreeNode root = new TreeNode(beforeMid.next.val);
+        root.right = sortedListToBST(beforeMid.next.next);
+        
+        if(head!=beforeMid.next){
+            beforeMid.next=null;
+            root.left = sortedListToBST(head);
+        }
+        
+        return root;
+    }
+    
+    private ListNode findBeforeMid(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head.next;
+        ListNode beforemid = head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            beforemid=slow;
+        }
+        return beforemid;
+    }
+}
+```
