@@ -2,16 +2,34 @@
 
 ![](../.gitbook/assets/image%20%284%29.png)
 
+## Maximum Subarray
+
+https://www.lintcode.com/problem/maximum-subarray
+
+```java
+public class Solution {
+    public int maxSubArray(int[] nums) {
+        // write your code here
+        int i=0;
+        int max=Integer.MIN_VALUE;
+        int sum=0;
+        while(i<nums.length){
+            sum=sum+nums[i];
+            max=Math.max(max,sum);
+            if(sum<0) sum=0;
+            i++;
+        }
+        return max;
+    }
+}
+```
+
 ## Subarray Sum
 
 https://www.lintcode.com/problem/subarray-sum
 
 ```java
 public class Solution {
-    /**
-     * @param nums: A list of integers
-     * @return: A list of integers includes the index of the first number and the index of the last number
-     */
     public List<Integer> subarraySum(int[] nums) {
         // write your code here
         List<Integer> result = new ArrayList<>();
