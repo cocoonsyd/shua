@@ -15,5 +15,6 @@
   * [Dummy Node](linked-list-and-array/dummy-node.md)
   * [Sort List](linked-list-and-array/sort-list.md)
   * [Subarray](linked-list-and-array/subarray.md)
-* [Two Pointers](two-pointers.md)
+* [Two Pointers](two-pointers/README.md)
+  * [test](two-pointers/test.md)
 
