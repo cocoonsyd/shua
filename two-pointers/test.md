@@ -1,4 +1,6 @@
-# test
+# 相向双指针
 
-tt
+## Rotate String
+
+注意如何将rotate操作分解为三步reverse操作
 
