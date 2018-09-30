@@ -4,7 +4,7 @@
 
 ## Maximum Subarray
 
-https://www.lintcode.com/problem/maximum-subarray
+[https://www.lintcode.com/problem/maximum-subarray](https://www.lintcode.com/problem/maximum-subarray)
 
 ```java
 public class Solution {
@@ -26,7 +26,7 @@ public class Solution {
 
 ## Subarray Sum
 
-https://www.lintcode.com/problem/subarray-sum
+[https://www.lintcode.com/problem/subarray-sum](https://www.lintcode.com/problem/subarray-sum)
 
 ```java
 public class Solution {
@@ -43,9 +43,9 @@ public class Solution {
                 result.add(i);
                 return result;
             }
-            
+
             map.put(sum,i);
-            
+
         }
         return result;
     }
@@ -54,9 +54,9 @@ public class Solution {
 
 ## Subarray Sum Closest
 
-https://www.lintcode.com/problem/subarray-sum-closest
+[https://www.lintcode.com/problem/subarray-sum-closest](https://www.lintcode.com/problem/subarray-sum-closest)
 
-首先O(n^2)的算法很好想，直接枚举起点就行，看到挑战的复杂度，想肯定要排序或者二分什么的，这里没找出能二分的性质来，所以想只能想排序了，我们知道连续数组的和其实就是前缀和之间的差，而要求和最接近于零，也就是说，两个前缀和要最接近，那么直接前缀和排序，相邻两项比较即可。
+首先O\(n^2\)的算法很好想，直接枚举起点就行，看到挑战的复杂度，想肯定要排序或者二分什么的，这里没找出能二分的性质来，所以想只能想排序了，我们知道连续数组的和其实就是前缀和之间的差，而要求和最接近于零，也就是说，两个前缀和要最接近，那么直接前缀和排序，相邻两项比较即可。
 
 ```java
 class Pair{
@@ -66,7 +66,7 @@ class Pair{
         this.index=index;
         this.sum=sum;
     }
-    
+
 }
 
 public class Solution {
@@ -126,5 +126,4 @@ public class Solution {
 一个 n 个数的数组， 变成了 prefix Sum 数组之后，会多一个数出来
 */
 ```
-
 
