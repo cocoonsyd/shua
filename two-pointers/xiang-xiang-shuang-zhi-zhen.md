@@ -30,3 +30,36 @@ public class Solution {
 }
 ```
 
+## Recover Rotated Sorted Array
+
+https://www.lintcode.com/problem/recover-rotated-sorted-array
+
+注意如何将rotate操作分解为三步reverse操作
+
+```java
+public class Solution {
+    /**
+     * @param nums: An integer array
+     * @return: nothing
+     */
+    private void rotate(List<Integer> nums, int start, int end){
+        while(start<end){
+            int tmp = nums.get(start);
+            nums.set(start, nums.get(end));
+            nums.set(end, tmp);
+            start++;
+            end--;
+        }
+    }
+    
+    public void recoverRotatedSortedArray(List<Integer> nums) {
+        int index = 0;
+        while(index<nums.size()-1 && nums.get(index+1)>=nums.get(index)){
+            index++;
+        }
+        rotate(nums, 0, index);
+        rotate(nums, index+1, nums.size()-1);
+        rotate(nums, 0, nums.size()-1);
+    }
+}
+```
