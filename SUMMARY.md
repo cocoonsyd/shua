@@ -16,5 +16,6 @@
   * [Sort List](linked-list-and-array/sort-list.md)
   * [Subarray](linked-list-and-array/subarray.md)
 * [Two Pointers](two-pointers/README.md)
+  * [Partitioning & Sorting](two-pointers/partitioning-and-sorting.md)
   * [相向双指针](two-pointers/xiang-xiang-shuang-zhi-zhen.md)
 
