@@ -2,7 +2,7 @@
 
 ## Partition Array
 
-https://www.lintcode.com/problem/partition-array
+[https://www.lintcode.com/problem/partition-array](https://www.lintcode.com/problem/partition-array)
 
 类似quicksort
 
@@ -13,7 +13,7 @@ public class Solution {
         // write your code here
         int lp=0;
         int rp=nums.length-1;
-        
+
         while(lp<=rp){
             while(lp<=rp && nums[lp]<k){
                 lp++;
@@ -29,7 +29,7 @@ public class Solution {
                 rp--;
             }
         }
-        
+
         return lp;
     }
 }
@@ -70,12 +70,12 @@ public class Solution {
     public void sortColors2(int[] colors, int k) {
         rainbowSort(colors, 0, colors.length-1, 1, k);
     }
-    
+
     private void rainbowSort(int[] colors, int left, int right, int colorFrom, int colorTo){
-        
+
         if(colorFrom>=colorTo) return;
         if(left>=right) return;
-        
+
         int colorMid=(colorFrom+colorTo)/2;
         int leftPointer=left;
         int rightPointer=right;
@@ -94,7 +94,7 @@ public class Solution {
                 rightPointer--;
             }
         }
-        
+
         rainbowSort(colors, left, leftPointer, colorFrom, colorMid);
         rainbowSort(colors, rightPointer, right, colorMid+1, colorTo);
     }
