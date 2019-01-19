@@ -1,6 +1,2 @@
 # Data structures
 
-## LRU Cache
-
-
-

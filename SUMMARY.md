@@ -18,5 +18,6 @@
 * [Two Pointers](two-pointers/README.md)
   * [Partitioning & Sorting](two-pointers/partitioning-and-sorting.md)
   * [相向双指针](two-pointers/xiang-xiang-shuang-zhi-zhen.md)
-* [Data structures](data-structures.md)
+* [Data structures](data-structures/README.md)
+  * [Hash table](data-structures/hash-table.md)
 
