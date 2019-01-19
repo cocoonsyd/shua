@@ -4,6 +4,8 @@
 
 [https://www.lintcode.com/problem/lru-cache](https://www.lintcode.com/problem/lru-cache/description)
 
+Doubly linked list + hash table
+
 ```java
 public class LRUCache {
     /*
