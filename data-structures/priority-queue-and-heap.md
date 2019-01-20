@@ -18,6 +18,6 @@ https://www.lintcode.com/problem/merge-k-sorted-lists/
 
 第一种最容易想到，把每个linked list的head放到priority queue里面，每次取最小的。
 
-第二种，divide & conquer。把合并k个链表层层分解，每次合并两个链表，最终合并成一个链表。（类似mergesort）
+第二种，divide & conquer。把合并k个链表层层分解，每次合并两个链表，最终合并成一个链表（非常类似mergesort过程）。这种思路又有两种实现方式（类似mergesort也有两种实现），一种是用recursion不断分解直到base情况即合并两个链表，另一种是用循环两两合并，一轮结束后得到k/2个链表再两两合并（可能用到queue？）。
 
 
