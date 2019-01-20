@@ -21,12 +21,12 @@ public class LRUCache {
             this.val=val;
         }
     }
-    
+
     private int capacity;
     private Node head;
     private Node tail;
     private HashMap<Integer, Node> hash;
-    
+
     public LRUCache(int capacity) {
         // do intialization if necessary
         this.capacity = capacity;
@@ -44,7 +44,7 @@ public class LRUCache {
     public int get(int key) {
         // write your code here
         if(!hash.containsKey(key)) return -1;
-        
+
         Node node = hash.get(key);
         node.prev.next = node.next;
         node.next.prev = node.prev;
@@ -74,7 +74,7 @@ public class LRUCache {
             head.next = head.next.next;
             head.next.prev=head;
         }
-        
+
         //insert new node before tail
         Node new_node = new Node(key, value);
         hash.put(key, new_node);
