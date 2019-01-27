@@ -92,4 +92,55 @@ public class Solution {
 
 第二种，divide & conquer。把合并k个链表层层分解，每次合并两个链表，最终合并成一个链表（非常类似mergesort过程）。这种思路又有两种实现方式（类似mergesort也有两种实现），一种是用recursion不断分解直到base情况即合并两个链表，另一种是用循环两两合并，一轮结束后得到k/2个链表再两两合并（可能用到queue？）。
 
+Recursion:
+
+```java
+public class Solution {
+    /**
+     * @param lists: a list of ListNode
+     * @return: The head of one sorted list.
+     */
+    public ListNode mergeKLists(List<ListNode> lists) {  
+        if(lists==null || lists.size()==0){
+            return null;
+        }
+        return mergeIndex(lists, 0, lists.size()-1);
+    }
+    
+    private ListNode mergeIndex(List<ListNode> lists, int start, int end){
+        if(start==end){
+            return lists.get(start);
+        }
+        
+        int mid = (start+end)/2;
+        ListNode left = mergeIndex(lists, start, mid);
+        ListNode right = mergeIndex(lists, mid+1, end);
+        return mergeTwoLists(left, right);
+    }
+    
+    private ListNode mergeTwoLists(ListNode list1, ListNode list2){
+        ListNode dummy = new ListNode(0);
+        ListNode cur = dummy;
+        while(list1!=null && list2!=null){
+            if(list1.val<list2.val){
+                cur.next = list1;
+                list1=list1.next;
+                cur=cur.next;
+            }
+            else{
+                cur.next = list2;
+                list2=list2.next;
+                cur=cur.next;
+            }
+        }
+        if(list1!=null){
+            cur.next=list1;
+        }
+        if(list2!=null){
+            cur.next=list2;
+        }
+        return dummy.next;
+    }
+}
+```
 
