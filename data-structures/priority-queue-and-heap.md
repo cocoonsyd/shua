@@ -2,7 +2,7 @@
 
 ## Top k Largest Numbers II
 
-https://www.lintcode.com/problem/top-k-largest-numbers-ii
+[https://www.lintcode.com/problem/top-k-largest-numbers-ii](https://www.lintcode.com/problem/top-k-largest-numbers-ii)
 
 注意有两种思路。
 
@@ -52,7 +52,7 @@ public class Solution {
 
 ## Merge K Sorted Lists
 
-https://www.lintcode.com/problem/merge-k-sorted-lists/
+[https://www.lintcode.com/problem/merge-k-sorted-lists/](https://www.lintcode.com/problem/merge-k-sorted-lists/)
 
 也有多种思路。
 
@@ -103,18 +103,18 @@ public class Solution {
         }
         return mergeIndex(lists, 0, lists.size()-1);
     }
-    
+
     private ListNode mergeIndex(List<ListNode> lists, int start, int end){
         if(start==end){
             return lists.get(start);
         }
-        
+
         int mid = (start+end)/2;
         ListNode left = mergeIndex(lists, start, mid);
         ListNode right = mergeIndex(lists, mid+1, end);
         return mergeTwoLists(left, right);
     }
-    
+
     private ListNode mergeTwoLists(ListNode list1, ListNode list2){
         ListNode dummy = new ListNode(0);
         ListNode cur = dummy;

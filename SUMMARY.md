@@ -21,4 +21,5 @@
 * [Data structures](data-structures/README.md)
   * [Priority queue & Heap](data-structures/priority-queue-and-heap.md)
   * [Hash table](data-structures/hash-table.md)
+* [Dynamic Programming](dynamic-programming.md)
 
